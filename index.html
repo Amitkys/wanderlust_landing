@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="bg-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust</title>
+    <!-- Google Fonts  -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- DaisyUI  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- dynamic typing -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+       <!-- animation --> <!-- necessary to add script tag in the last of body tag, other wise it will won't work-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Tailwind  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- lenis for smoothness  -->
+    <link rel="stylesheet" href="./Animation/lenis.css">
+    <!-- main css file  -->
+    <link rel="stylesheet" href="./style/style.css">
+    <style>
+      /* Highlight the text  */
+    mark.scroll-highlight {
+      background-size: 0 100%;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-image: linear-gradient(yellow, yellow);
+    /*    color: white; */
+      border-radius: 10px;
+      padding: 0 5px;
+      color: #4B5563;
+      animation: mark-it 2s linear forwards;
+      animation-timeline: view();
+      animation-iteration-count: 1;
+      animation-range: contain 20% contain 60%;
+    }
+    @keyframes mark-it {
+      0% {
+          background-size: 0 100%;
+          color: #4B5563;
+      }
+      50% {
+        /*  color: black; */
+      }
+      100% {
+          background-size: 100% 100%;
+          color: black;
+      }
+  }
+    </style>
+</head>
+<body >
+    <!-- greay for background color: #31363F, #191E24
+    white color for text : #A6ADBB -->
+    
+
+    <div id="container" class="h-screen w-screen bg-black px-3">
+        <!-- Navigation Bar -->
+        <div class="navbar bg-base-100 bg-[#31363F] text-[#A6ADBB] rounded ">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+              </div>
+              <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow text-[#A6ADBB] bg-black rounded-box w-52">
+                <li><a>Homepage</a></li>
+                <li><a>Portfolio</a></li>
+                <li><a>About</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="navbar-center">
+            <a class="btn btn-ghost text-xl">AmitKYs</a>
+          </div>
+          <div class="navbar-end">
+            <button class="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </button>
+            <button class="btn btn-ghost btn-circle">
+              <div class="indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                <span class="badge badge-xs badge-primary indicator-item"></span>
+              </div>
+            </button>
+          </div>
+        </div>
+          <!-- Home Page  -->
+          <div id="Home-page" class="h-[75%] lg:h-[90%] w-full flex lg:flex-row flex-col overflow-hidden bg-base-200 rounded">
+            <div class="h-[50%] lg:h-full w-full lg:w-[50%]  flex flex-col items-center justify-center">
+              <div class="text-center">
+                <h1  style="font-family: 'Rubik';" class="font-semibold text-[55px] lg:text-[75px]">
+                  <span class="text-[40px] lg:text-[55px]">Welcome to</span><br><span id="wander-heading" class="text-error">Wanderlust..</span>
+                </h1>
+              </div>
+              <h2 class="self-start mt-4 ml-12 lg:ml-20 my-10 lg:my-6 " style="font-family: 'Rubik';"><div class="mr-4"><i class="ri-corner-down-right-fill text-[25px] text-error"></i><span class="text-[20px]" id="info-listing-auto-type"></span></div></h2>
+            </div>
+            <div class="h-[50%] lg:h-[100%] w-full lg:w-[50%] text-error px-3 flex justify-center items-center">
+                <svg id="dog-person" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="h-[110%]"><g><path fill="#fdc9a6" d="m336 216-24 32-40 16-24 16-16-16v-16l24-8 40-24 24-48 16.468 39.404z" opacity="1" data-original="#fdc9a6"></path><path fill="#a8a8a8" d="m360 320 24 72 48 64 24-40-32-40-24-96z" opacity="1" data-original="#a8a8a8"></path><path fill="#683b0d" d="m280 456-16 16v16h64v-32z" opacity="1" data-original="#683b0d"></path><path fill="#cbcbcb" d="M400 267.155V256h-64l-56 96v104h48v-96l32-32 25.26-25.26A50.324 50.324 0 0 0 400 267.155z" opacity="1" data-original="#cbcbcb"></path><path fill="#c38325" d="M224 416v32l-16 40h32l16-40v-26l-24-30zM112 408l-27.095 20.321a8 8 0 0 0-2.628 9.372L96 472l24-8-8-24 16-16z" opacity="1" data-original="#c38325"></path><path fill="#ff6268" d="M400 256v-98.559a18 18 0 0 0-3.014-9.971L376 115.93h-40l8 16-23.768 32.733a27.249 27.249 0 0 0-3.8 24.629 27.25 27.25 0 0 0 13.668 15.756L336 208v48z" opacity="1" data-original="#ff6268"></path><path fill="#fdc9a6" d="M365.933 175.822 384 224l-2.683 38.78L372 280l16.425 14.606L408 291l8-75-18.247-51.752a16.931 16.931 0 0 0-21.942-10.212 16.932 16.932 0 0 0-9.878 21.786z" opacity="1" data-original="#fdc9a6"></path><path fill="#683b0d" d="M432 456v24h32l16-40-24-24z" opacity="1" data-original="#683b0d"></path><path fill="#fdc9a6" d="M328 59.93v32a8 8 0 0 0 8 8h8v16h32v-16l8-24h-16l-8-16z" opacity="1" data-original="#fdc9a6"></path><path fill="#683b0d" d="m328 59.93-3.13-9.389a20.165 20.165 0 0 1 7.945-23.154 20.162 20.162 0 0 1 22.37 0L368 35.93h14.774a14.928 14.928 0 0 1 13.352 8.252 14.928 14.928 0 0 1-.931 14.956L384 75.93h-16l-8-16z" opacity="1" data-original="#683b0d"></path><path fill="#c38325" d="M264 344a36.612 36.612 0 0 0 8.845-37.466L272 304l12.172 3.043a32.3 32.3 0 0 1 23.836 25 32.3 32.3 0 0 1-12.291 32.171L280 376z" opacity="1" data-original="#c38325"></path><path fill="#ea9d2d" d="m64 320-16 8-8 16-16 8 16 32 32-8 24 8 4.032 16.127a32 32 0 0 0 19.16 21.95L144 432v16l-16 40h32l16-32v-24l48-16 8-24 32 40 27 16 14.372 40H328l-8-56-24-24v-16.4a49.1 49.1 0 0 0-18.427-38.34 78.763 78.763 0 0 0-49.2-17.26H213.6a78.758 78.758 0 0 0-11.138.792l-32.231 4.6a78.007 78.007 0 0 1-35.7-3.219L104 328l-24-32z" opacity="1" data-original="#ea9d2d"></path><path fill="#0292c9" d="M245.66 277.66c-.49.49-112.05 64.35-112.05 64.35l-30.95 46.43a8 8 0 1 1-13.32-8.88l32-48a8.08 8.08 0 0 1 2.69-2.51l110.1-62.92z" opacity="1" data-original="#0292c9" class=""></path><circle cx="72" cy="343" r="7" fill="#c38325" opacity="1" data-original="#c38325"></circle></g></svg>
+            </div>
+          </div>
+            <!-- Horizontal Row  -->
+            <hr class="horizontal-row mt-8">
+            <!-- 4 Features  -->
+          <div id="features">
+              <div class="body-font" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="container py-10 mx-auto">
+                      <div class="flex flex-wrap -m-4 text-center">
+                          <!-- 1 -->
+                          <div class="p-4 sm:w-1/4 w-1/2" data-aos="zoom-in" data-aos-duration="600">
+                              <img class="h-[50px] w-[50px] ml-[45px] lg:ml-[110px] mb-2" src="./image/heart.svg" alt="Heart" oncontextmenu="return false">
+                              <p class="leading-relaxed text-center"><span class="bg-[#191E24] py-1 px-2 rounded-lg">Everyone loves it!</span></p>
+                          </div>
+                          <!-- 2 -->
+                          <div class="p-4 sm:w-1/4 w-1/2" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
+                              <img class="h-[50px] w-[50px] ml-[45px] lg:ml-[110px] mb-2" src="./image/fun.svg" alt="Heart" oncontextmenu="return false">
+                              <p class="leading-relaxed text-center"><span class="bg-[#191E24] py-1 px-2 rounded-lg">A lot of fun.</span></p>
+                          </div>
+                          <!-- 3 -->
+                          <div class="p-4 sm:w-1/4 w-1/2" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="1000">
+                              <img class="h-[50px] w-[50px] ml-[45px] lg:ml-[110px] mb-2" src="./image/journey.svg" alt="Heart" oncontextmenu="return false">
+                              <p class="leading-relaxed text-center"><span class="bg-[#191E24] py-1 px-2 rounded-lg">Every day is a new journey!</span></p>
+                          </div>
+                          <!-- 4 -->
+                          <div class="p-4 sm:w-1/4 w-1/2" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="1500">
+                              <img class="h-[50px] w-[50px] ml-[45px] lg:ml-[110px] mb-2" src="./image/care.svg" alt="Heart" oncontextmenu="return false">
+                              <p class="leading-relaxed text-center"><span class="bg-[#191E24] py-1 px-2 rounded-lg">We care about you.</span></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <!-- Steps to Follow -->
+          <section id="steps" class="text-gray-600 bg-[#191E24] pt-5 rounded-lg">
+              <h1 id="stepHeading" class="text-center mt-8 mb-[-35px] font-bold text-[30px]  lg:text-[40px]">Steps to be Consider</h1>
+              <div class="container px-5 py-24 mx-auto flex flex-wrap">
+                <div class="flex flex-wrap w-full" id="step-content">
+                  <div id="fourSteps" class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+                    <!-- 1 -->
+                    <div id="one" class="flex relative pb-12 ">
+                      <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-green-600 pointer-events-none"><mark class="scroll-highlight"></mark></div>
+                      </div>
+                      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-900 inline-flex items-center justify-center  relative z-10">
+                        <img src="./image/security.svg" alt="Security">
+                      </div>
+                      <div class="flex-grow pl-4 "> <!-- have a color: daisyUI-->
+                        <h2 class="font-medium title-font text-sm text-green-400 mb-1 tracking-wider">STEP 1</h2>
+                        <p class="leading-relaxed "><span class="bg-black px-3 text-white rounded-md">Registration,</span> it allows us to know about you. <br> and <mark class="scroll-highlight">we promish you to protect your data.</mark></p>
+                      </div>
+                    </div>
+                    <!-- 2 -->
+                    <div id="two" class="flex relative pb-12 ">
+                      <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-green-600 pointer-events-none"></div>
+                      </div>
+                      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-900 inline-flex items-center justify-center  relative z-10">
+                        <img src="./image/home.svg" alt="Security">
+                      </div>
+                      <div class="flex-grow pl-4 "> <!-- have a color: daisyUI-->
+                        <h2 class="font-medium title-font text-sm text-green-400 mb-1 tracking-wider">STEP 2</h2>
+                        <p class="leading-relaxed "><span class="bg-black px-3 text-white rounded-md">Add home,</span> I'll other let tour your house. It's important, So visiters can see, and approach you.</p>
+                      </div>
+                    </div>
+                    <!-- 3 -->
+                    <div id="three" class="flex relative pb-12 ">
+                      <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-green-600 pointer-events-none"></div>
+                      </div>
+                      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-900 inline-flex items-center justify-center  relative z-10">
+                        <img src="./image/user-profile.svg" alt="Security">
+                      </div>
+                      <div class="flex-grow pl-4"> <!-- have a color: daisyUI-->
+                        <h2 class="font-medium title-font text-sm text-green-400 mb-1 tracking-wider">STEP 3</h2>
+                        <p class="leading-relaxed "><span class="bg-black px-3 text-white rounded-md">Setup Profile,</span> it's provide a personalized experience and enable better communication between buyers and sellers.</p>
+                      </div>
+                    </div>
+                      <!-- 4 -->
+                      <div id="four" class="flex relative pb-12 ">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                          <div class="h-full w-1 bg-green-600 pointer-events-none"></div>
+                        </div>
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-900 inline-flex items-center justify-center  relative z-10">
+                          <img src="./image/paymentAndDocument.svg" alt="Security">
+                        </div>
+                        <div class="flex-grow pl-4"> <!-- have a color: daisyUI-->
+                          <h2 class="font-medium title-font text-sm text-green-400 mb-1 tracking-wider">STEP 4</h2>
+                          <p class="leading-relaxed "><span class="bg-black px-3 text-white rounded-md">Payment and documentation.</span> after payments, doing paper work related to documentation is neccessary. <br> <mark class="scroll-highlight">It allow buyers and sellers to confirm it's deal.</mark></p>
+                        </div>
+                      </div>
+                        <!-- 5 -->
+                        <div id="five" class="flex relative pb-12 ">
+                          <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-green-600 pointer-events-none"></div>
+                          </div>
+                          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-900 inline-flex items-center justify-center  relative z-10">
+                            <img src="./image/done.svg" alt="Security">
+                          </div>
+                          <div class="flex-grow pl-4 "> <!-- have a color: daisyUI-->
+                            <h2 class="font-medium title-font text-sm text-green-400 mb-1 tracking-wider">Finalize the Deal</h2>
+                            <p class="leading-relaxed ">Securely process your payment through our platform and handle all necessary legal documentation to transfer ownership.</p>
+                          </div>
+                        </div>
+                  </div>
+                  <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="./image/home-img.jpg" alt="step">
+                </div>
+              </div>
+          </section>
+           <!-- Trending right now  -->
+          <section id="trend" class="text-gray-600 body-font">
+            <h1 id="trend_heading"  class="text-gray-500 text-center mt-8 mb-[-35px] font-bold text-[30px]  lg:text-[40px]">What People love to do -</h1>
+            <div class="container px-5 py-24 mx-auto">
+              
+              <div class="flex flex-wrap -mx-4 -mb-10 text-center">
+                
+                <div class="sm:w-1/2 mb-10 px-4">
+                  <div class="rounded-lg h-64 overflow-hidden" data-aos="zoom-out" data-aos-easing="linear" data-aos-delay="500" data-aos-duration="500">
+                    <img alt="content" class="object-cover object-center h-full w-full" src="https://images.pexels.com/photos/6466385/pexels-photo-6466385.jpeg?auto=compress&cs=tinysrgb&w=600">
+                  </div>
+                  <h2 class="title-font text-2xl font-medium mt-6 mb-3">Chasing Horizons by Rail</h2>
+                  <p class="leading-relaxed text-base">Embark on a journey of discovery as the world passes by your window. Feel the rhythm of the tracks and the anticipation of new adventures waiting just beyond the horizon. Every train ride is a story, and hers is just beginning.</p>
+                  <div data-aos="fade-up"><button  class="flex mx-auto mt-6 border-0 py-2 px-10 focus:outline-none rounded-lg btn bg-error text-black hover:text-white">Explore</button></div>
+                </div>
+                <div class="sm:w-1/2 mb-10 px-4">
+                  <div class="rounded-lg h-64 overflow-hidden" data-aos="zoom-out" data-aos-easing="linear" data-aos-delay="900" data-aos-duration="500">
+                    <img alt="content" class="object-cover object-center h-full w-full" src="https://images.pexels.com/photos/2450296/pexels-photo-2450296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+                  </div>
+                  <h2 class="title-font text-2xl font-medium mt-6 mb-3">Conquering Peaks and Dreams</h2>
+                  <p class="leading-relaxed text-base">Experience the thrill of reaching new heights, where every step brings a fresh perspective. Embrace the challenge of the climb and the serenity of the summit. In the mountains.</p>
+                  <div data-aos="fade-up"><button  class="flex mx-auto mt-6 border-0 py-2 px-10 focus:outline-none rounded-lg btn bg-error text-black hover:text-white">Explore</button></div>
+                </div>
+              </div>
+            </div>
+          </section>
+            <!-- Testimonials  -->
+          <section id="testimonials" class="body-font bg-[#191E24] rounded-lg">
+              <div class="container px-5 py-20 mx-auto">
+                <h1 class="text-3xl font-medium title-font mb-12 text-center">Testimonials</h1>
+                <div class="flex flex-wrap -m-4">
+                  <div class="p-4 md:w-1/2 w-full">
+                    <div class="h-full bg-black p-8 rounded">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 mb-4" viewBox="0 0 975.036 975.036">
+                        <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+                      </svg>
+                      <p class="leading-relaxed mb-6">Wanderlust Project changed my life. From Icelandic adventures to post-ironic cityscapes, it's the ultimate authentic experience. Now, every brunch is an heirloom memory, and my fanny pack holds stories, not just stuff.</p>
+                      <a class="inline-flex items-center">
+                        <img data-aos="fade-right" alt="testimonial" src="https://pics.craiyon.com/2023-12-04/poL7bfp7RcSKVr7p5Rp2Vg.webp" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+                        <span class="flex-grow flex flex-col pl-4">
+                          <span class="title-font font-medium">Holden Caulfield</span>
+                          <span class="text-sm">UI DEVELOPER</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="p-4 md:w-1/2 w-full">
+                    <div class="h-full bg-black p-8 rounded">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 mb-4" viewBox="0 0 975.036 975.036">
+                        <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+                      </svg>
+                      <p class="leading-relaxed mb-6">Joining the Wanderlust Project was the best decision ever. Tacos in Iceland, post-ironic vibes, and authentic experiences galore. It's like a fanny pack full of memories, curated just for me.</p>
+                      <a class="inline-flex items-center">
+                        <img data-aos-delay="700" data-aos="fade-right" alt="testimonial" src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+                        <span class="flex-grow flex flex-col pl-4">
+                          <span class="title-font font-medium">Alper Kamu</span>
+                          <span class="text-sm">DESIGNER</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </section>
+            <!-- contact us  or footer  -->
+          <section id="footer" class="body-font relative">
+              <div class="container px-5 py-24 mx-auto">
+                <div class="flex flex-col text-center w-full mb-12">
+                  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4">Contact Us</h1>
+                  <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Reach out to us for any inquiries or assistance, and we'll be happy to help!</p>
+                </div>
+                <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                  <div class="flex flex-wrap -m-2">
+                    <div class="p-2 w-1/2">
+                      <div class="relative">
+                        <label for="name" class="leading-7 text-sm">Name</label>
+                        <input type="text" id="name" name="name" class="w-full bg-opacity-50 rounded border focus:bg-[#191E24] focus:ring-2 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                      </div>
+                    </div>
+                    <div class="p-2 w-1/2">
+                      <div class="relative">
+                        <label for="email" class="leading-7 text-sm">Email</label>
+                        <input type="email" id="email" name="email" class="w-full bg-opacity-50 rounded border focus:bg-[#191E24] focus:ring-2 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                      </div>
+                    </div>
+                    <div class="p-2 w-full">
+                      <div class="relative">
+                        <label for="message" class="leading-7 text-sm">Message</label>
+                        <textarea id="message" name="message" class="w-full bg-opacity-50 rounded border focus:bg-[#191E24] focus:ring-2 h-32 text-base outline-none py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                      </div>
+                    </div>
+                    <div class="p-2 w-full">
+                      <button class="flex btn bg-error  mx-auto border-0 py-2 px-8 focus:outline-none rounded text-lg text-black hover:text-white">Button</button>
+                    </div>
+                    <div class="p-2 w-full pt-8 mt-8 border-t text-center">
+                      <a>aamitkys@gmail.com</a>
+                      <p class="leading-normal my-5">AmitKYs
+                        <br>India, 843324
+                      </p>
+                      <span class="inline-flex">
+                        <a href="https://x.com/amitkys">
+                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" x="0" y="0" viewBox="0 0 1227 1227" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M613.5 0C274.685 0 0 274.685 0 613.5S274.685 1227 613.5 1227 1227 952.315 1227 613.5 952.315 0 613.5 0z" fill="#000000" opacity="1" data-original="#000000" class=""></path><path fill="#ffffff" d="m680.617 557.98 262.632-305.288h-62.235L652.97 517.77 470.833 252.692H260.759l275.427 400.844-275.427 320.142h62.239l240.82-279.931 192.35 279.931h210.074L680.601 557.98zM345.423 299.545h95.595l440.024 629.411h-95.595z" opacity="1" data-original="#ffffff"></path></g></svg>
+                        </a>
+                        <a class="ml-4" href="https://www.linkedin.com/in/amit-kumar-895023196">
+                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" x="0" y="0" viewBox="0 0 176 176" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><rect width="176" height="176" fill="#0077b5" rx="24" opacity="1" data-original="#0077b5" class=""></rect><g fill="#fff"><path d="M63.4 48a15 15 0 1 1-15-15 15 15 0 0 1 15 15zM60 73v66.27a3.71 3.71 0 0 1-3.71 3.73H40.48a3.71 3.71 0 0 1-3.72-3.72V73a3.72 3.72 0 0 1 3.72-3.72h15.81A3.72 3.72 0 0 1 60 73zM142.64 107.5v32.08a3.41 3.41 0 0 1-3.42 3.42h-17a3.41 3.41 0 0 1-3.42-3.42v-31.09c0-4.64 1.36-20.32-12.13-20.32-10.45 0-12.58 10.73-13 15.55v35.86A3.42 3.42 0 0 1 90.3 143H73.88a3.41 3.41 0 0 1-3.41-3.42V72.71a3.41 3.41 0 0 1 3.41-3.42H90.3a3.42 3.42 0 0 1 3.42 3.42v5.78c3.88-5.82 9.63-10.31 21.9-10.31 27.18 0 27.02 25.38 27.02 39.32z" fill="#ffffff" opacity="1" data-original="#ffffff" class=""></path></g></g></g></svg>                       
+                        </a>
+                        <a class="ml-4" href="https://github.com/amitkys">
+                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" x="0" y="0" viewBox="0 0 176 176" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><rect width="176" height="176" fill="#262626" rx="24" opacity="1" data-original="#262626" class=""></rect><path fill="#ffffff" d="M88 35.29c-30.39 0-55 24.2-55 54.05 0 23.88 15.76 44.14 37.61 51.28 2.75.5 3.75-1.17 3.75-2.6s0-4.69-.06-9.19c-15.3 3.26-18.53-7.25-18.53-7.25-2.5-6.24-6.12-7.91-6.12-7.91-5-3.35.39-3.28.39-3.28 5.52.37 8.42 5.57 8.42 5.57 4.9 8.26 12.87 5.87 16 4.49a11.42 11.42 0 0 1 3.54-7.22c-12.21-1.36-25-6-25-26.71A20.64 20.64 0 0 1 58.57 72c-.62-1.37-2.47-6.86.48-14.31 0 0 4.61-1.45 15.13 5.54a52.85 52.85 0 0 1 27.5 0c10.45-7 15-5.54 15-5.54 3 7.45 1.1 12.94.55 14.31a20.71 20.71 0 0 1 5.64 14.5c0 20.76-12.86 25.33-25.09 26.66 1.92 1.62 3.71 4.94 3.71 10 0 7.23-.07 13-.07 14.8 0 1.42 1 3.11 3.78 2.57 22-7.1 37.75-27.37 37.75-51.21C143 59.49 118.37 35.29 88 35.29z" data-name="background" opacity="1" data-original="#ffffff" class=""></path></g></g></svg>
+                        </a>
+                        <a class="ml-4" href="https://instagram.com/amit_kys">
+                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" x="0" y="0" viewBox="0 0 152 152" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><linearGradient id="a" x1="22.26" x2="129.74" y1="22.26" y2="129.74" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fae100"></stop><stop offset=".15" stop-color="#fcb720"></stop><stop offset=".3" stop-color="#ff7950"></stop><stop offset=".5" stop-color="#ff1c74"></stop><stop offset="1" stop-color="#6c1cd1"></stop></linearGradient><g data-name="Layer 2"><g data-name="03.Instagram"><rect width="152" height="152" fill="url(#a)" rx="76" opacity="1" data-original="url(#a)"></rect><g fill="#fff"><path d="M133.2 26c-11.08 20.34-26.75 41.32-46.33 60.9S46.31 122.12 26 133.2q-1.91-1.66-3.71-3.46A76 76 0 1 1 129.74 22.26q1.8 1.8 3.46 3.74z" opacity="1" fill="#ffffff10" data-original="#ffffff10" class=""></path><path d="M94 36H58a22 22 0 0 0-22 22v36a22 22 0 0 0 22 22h36a22 22 0 0 0 22-22V58a22 22 0 0 0-22-22zm15 54.84A18.16 18.16 0 0 1 90.84 109H61.16A18.16 18.16 0 0 1 43 90.84V61.16A18.16 18.16 0 0 1 61.16 43h29.68A18.16 18.16 0 0 1 109 61.16z" fill="#ffffff" opacity="1" data-original="#ffffff" class=""></path><path d="m90.59 61.56-.19-.19-.16-.16A20.16 20.16 0 0 0 76 55.33 20.52 20.52 0 0 0 55.62 76a20.75 20.75 0 0 0 6 14.61 20.19 20.19 0 0 0 14.42 6 20.73 20.73 0 0 0 14.55-35.05zM76 89.56A13.56 13.56 0 1 1 89.37 76 13.46 13.46 0 0 1 76 89.56zM102.43 54.38a4.88 4.88 0 0 1-4.85 4.92 4.81 4.81 0 0 1-3.42-1.43 4.93 4.93 0 0 1 3.43-8.39 4.82 4.82 0 0 1 3.09 1.12l.1.1a3.05 3.05 0 0 1 .44.44l.11.12a4.92 4.92 0 0 1 1.1 3.12z" fill="#ffffff" opacity="1" data-original="#ffffff" class=""></path></g></g></g></g></svg>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </section> 
+    </div>
+
+
+
+
+
+
+
+    <!-- gsap  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- scroller Trigger  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Use to Split Word or text  -->
+  <script src="https://unpkg.com/split-type"></script>
+  <!-- lenis CDN  -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+  <!-- aos cdn  -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- other -->
+    <script src="./Animation/gsap.js"></script>
+    <script src="./Animation/lenis.js"></script>
+    <script>
+      // add animation in those element who have heigh and width
+      // otherwise you might face overflow issue
+    AOS.init();
+  </script>
+  <script src="./JavaScript/main.js"></script>
+  
+</body>
+</html>
